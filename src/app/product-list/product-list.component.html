@@ -1,5 +1,21 @@
 <h2>Products</h2>
 
+<div *ngFor="let p of products; index as productId">
+
+  <h3>
+    <a [routerLink]="['products/', productId]" [title]="p.name + ' details'" href="javascript:void(0)">Name: {{p.name}}</a>
+  </h3>
+  <p>
+    Description: {{!p.description ? 'No description' : p.description}}
+  </p>
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts [product]="p" (notify)="onNotify()"></app-product-alerts>
+
+  <div class="vertical-spacer"></div>
+</div>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
